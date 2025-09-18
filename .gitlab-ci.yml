@@ -57,11 +57,18 @@ deploy_production:
   stage: deploy
   dependencies:
     - build_mkdocs
+  image: nginx:latest
   script:
-    - echo "Deploying MkDocs site for production"
+    # Copy the built MkDocs site into Nginx default html folder
+    - mkdir -p /usr/share/nginx/html
+    - cp -r doc/site/* /usr/share/nginx/html/
+    # Start Nginx in the foreground
+    - nginx -g 'daemon off;' &
+    - sleep 2
+    - echo "MkDocs site is now running via Nginx"
   artifacts:
     paths:
       - doc/site
   environment:
     name: production
-    url: ${CI_PROJECT_URL}/-/jobs/${CI_JOB_ID}/artifacts/file/doc/site/index.html
+    url: ${CI_PROJECT_URL}/-/environments/production
