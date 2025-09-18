@@ -3,21 +3,50 @@ stages:
   - deploy
 
 variables:
-  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  UV_VERSION: "0.5"
+  PYTHON_VERSION: "3.12"
+  BASE_LAYER: bookworm-slim
+  # GitLab CI creates a separate mountpoint for the build directory,
+  # so we need to copy instead of using hard links.
+  UV_LINK_MODE: copy
+  UV_CACHE_DIR: .uv-cache
 
 # Only run pipeline on main branch
 workflow:
   rules:
     - if: '$CI_COMMIT_BRANCH == "main"'
 
+
+# checks:
+#   stage: checks
+#   image: ghcr.io/astral-sh/uv:$UV_VERSION-python$PYTHON_VERSION-$BASE_LAYER
+#   cache:
+#     - key:
+#         files:
+#           - uv.lock
+#       paths:
+#         - $UV_CACHE_DIR
+#   script:
+#     - uv sync
+#     - uv run ruff check .
+#     - uv run ruff format --check .
+#     - uv cache prune --ci
+
 # Build MkDocs site
 build_mkdocs:
   stage: build
-  image: ghcr.io/astral-sh/uv:latest
+  image: ghcr.io/astral-sh/uv:$UV_VERSION-python$PYTHON_VERSION-$BASE_LAYER
+  cache:
+    - key:
+        files:
+          - doc/uv.lock
+      paths:
+        - $UV_CACHE_DIR
   script:
     - cd doc
-    - uv sync               # install dependencies
+    - uv sync
     - uv run mkdocs build -d site
+    - uv cache prune --ci
   artifacts:
     paths:
       - doc/site
