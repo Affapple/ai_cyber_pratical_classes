@@ -1,0 +1,38 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+# Only run pipeline on main branch
+workflow:
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+# Build MkDocs site
+build_mkdocs:
+  stage: build
+  image: ghcr.io/astral-sh/uv:latest
+  script:
+    - cd doc
+    - uv sync               # install dependencies
+    - uv run mkdocs build -d site
+  artifacts:
+    paths:
+      - doc/site
+    expire_in: 1 week
+
+# Deploy production (main branch only)
+deploy_production:
+  stage: deploy
+  dependencies:
+    - build_mkdocs
+  script:
+    - echo "Deploying MkDocs site for production"
+  artifacts:
+    paths:
+      - doc/site
+  environment:
+    name: production
+    url: ${CI_PROJECT_URL}/-/jobs/${CI_JOB_ID}/artifacts/file/doc/site/index.html
