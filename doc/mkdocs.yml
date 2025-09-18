@@ -1,0 +1,20 @@
+site_name: AI security course
+site_url: https://mydomain.org/mysite
+theme:
+  name: material
+plugins:
+   - search
+   - awesome-nav
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.snippets:
+      check_paths: true
+      base_path: includes
+watch:
+  - includes
