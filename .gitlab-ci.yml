@@ -53,22 +53,11 @@ build_mkdocs:
     expire_in: 1 week
 
 # Deploy production (main branch only)
-deploy_production:
+pages:
   stage: deploy
-  dependencies:
-    - build_mkdocs
-  image: nginx:latest
   script:
-    # Copy the built MkDocs site into Nginx default html folder
-    - mkdir -p /usr/share/nginx/html
-    - cp -r doc/site/* /usr/share/nginx/html/
-    # Start Nginx in the foreground
-    - nginx -g 'daemon off;' &
-    - sleep 2
-    - echo "MkDocs site is now running via Nginx"
+    # GitLab Pages expects a folder named `public`
+    - mv doc/site public
   artifacts:
     paths:
-      - doc/site
-  environment:
-    name: production
-    url: ${CI_PROJECT_URL}/-/environments/production
+      - public
