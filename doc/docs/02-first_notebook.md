@@ -9,8 +9,8 @@ We will use the notebook `1_first_notebook.ipynb` as an example.
 First, clone this repository to your local machine:
 
 ```bash
-git clone INSERT_REPO_URL_HERE
-cd course-ai-security
+git clone git@gitlab.com:uniluxembourg/snt/serval/teachings/ai-security/ai-security-labs.git
+cd ai-security-labs
 ```
 
 In the `src` folder, you will find a folder for each labs in this course.
@@ -49,3 +49,20 @@ Select the interpreter located in the `.venv` folder.
 For the first lab, it should be something like `Python 3.8.10 (01-environment-setup) ./.venv/bin/python)`.
 
 Once the interpreter is selected, you can open the notebook `01_environment_setup.ipynb` and start running the cells.
+
+If it asks you to install/activate the Jupyter extension, accept it.
+
+It might also ask you to Select the kernel, in which case select:
+
+1. `Python Environments ...`
+2. `01-environment-setup`
+
+## Future labs
+
+For future labs, you will need to update the git repository to get the latest version to download the new labs:
+
+```bash
+git pull
+```
+
+Then, simply navigate to the corresponding folder in the `src` folder, run `uv sync` to create the environment, open the folder in vscode, and select the correct interpreter as above.
