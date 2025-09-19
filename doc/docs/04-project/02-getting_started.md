@@ -1,6 +1,6 @@
 # Getting started
 
-In this section, we will guide you through the steps to set up your development environment to implement a metric in the `a4s-eval module`.
+In this section, we will guide you through the steps to set up your development environment to implement a metric in the `a4s-eval` module.
 
 We assume that you have already completed the environment setup as described in the [Environment Setup](../01-env_setup.md) section and you have completed the [First notebook](../02-first_notebook.md) section.
 
@@ -18,7 +18,7 @@ cd a4s
 Then, clone the `a4s-eval` repository:
 
 ```bash
-git clone git@gitlab.com:uniluxembourg/snt/serval/teaching/ai-security/a4s-eval.git
+git clone git@gitlab.com:uniluxembourg/snt/serval/teachings/ai-security/a4s-eval.git
 cd a4s-eval
 ```
 
