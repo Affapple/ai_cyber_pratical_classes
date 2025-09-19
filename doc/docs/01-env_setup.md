@@ -10,6 +10,14 @@ If you use WSL2, you will have to execute all commands within your WSL2 distribu
 We assume you have the following tools installed on your system:
 
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [Git Large File Storage (LFS)](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage)
+
+!!! note
+    If you are using Ubuntu, you can install them with:
+    ```bash
+    sudo apt update
+    sudo apt install git git-lfs
+    ```
 
 ## VSCode
 
