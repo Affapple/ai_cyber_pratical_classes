@@ -40,3 +40,27 @@ uv run pytest
 
 If everything is set up correctly, you should see that all tests pass.
 This means that you are ready to start implementing your metric!
+
+### Known issues
+
+If your tests are running, but some tests are failing, you might be facing one of the following issues:
+
+```python
+len(df)
+E       AssertionError: assert 800 == 2
+```
+
+This is due to git-lfs being installed after cloning the repository.
+
+To fix this, run the following commands:
+
+```bash
+git lfs install
+git lfs pull
+```
+
+Then, run the tests again:
+
+```bash
+uv run pytest
+```
