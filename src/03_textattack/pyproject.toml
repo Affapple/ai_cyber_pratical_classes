@@ -6,6 +6,9 @@ readme = "README.md"
 requires-python = "~=3.10.0"
 dependencies = [
     "ipykernel>=6.30.1",
+    "nltk>=3.9.2",
+    "nvidia-cuda-nvcc-cu12>=12.9.86",
+    "nvidia-cuda-runtime-cu12>=12.8.90",
     "tensorflow~=2.19.0",
     "textattack[optional,tensorflow]>=0.3.10",
     "transformers==4.39.1",
