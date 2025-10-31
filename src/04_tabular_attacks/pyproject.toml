@@ -11,4 +11,5 @@ dependencies = [
     "serval-ml-commons==0.1.4",
     "torch>=2.8.0",
     "tqdm>=4.67.1",
+    "adversarial-robustness-toolbox==1.20.1",
 ]
