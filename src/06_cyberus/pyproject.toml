@@ -1,0 +1,15 @@
+[project]
+name = "06-cyberus"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "adversarial-robustness-toolbox>=1.20.1",
+    "ipykernel>=7.1.0",
+    "matplotlib>=3.10.7",
+    "medmnist>=3.0.2",
+    "monai[all]>=1.5.1",
+    "onnxruntime>=1.23.2",
+    "requests>=2.32.5",
+]
