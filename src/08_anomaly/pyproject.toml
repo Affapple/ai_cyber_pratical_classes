@@ -9,6 +9,7 @@ dependencies = [
     "matplotlib>=3.10.7",
     "openml>=0.15.1",
     "pandas>=2.3.3",
+    "river>=0.23.0",
     "scikit-learn>=1.7.2",
     "seaborn>=0.13.2",
     "shap>=0.49.1",
